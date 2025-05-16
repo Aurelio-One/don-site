@@ -37,8 +37,8 @@ function App() {
   return (
     <div className="container">
       <div className="card">
-        <h1>Soutenez-nous 🤍</h1>
-        <p>Choisissez un montant</p>
+        <h1>Paie 🤍</h1>
+        <p>Tu paies combien ?</p>
         <div className="buttons">
           {amounts.map((amt) => (
             <button
