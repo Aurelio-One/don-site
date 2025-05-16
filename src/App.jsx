@@ -47,8 +47,21 @@ function PaymentForm({ amount }) {
     if (result.error) {
       Swal.fire('Erreur', result.error.message, 'error')
     } else if (result.paymentIntent.status === 'succeeded') {
-      Swal.fire('Fait.', "C'est payé. Tu peux partir.", 'success')
-    }
+      Swal.fire({
+        title: "Exécuté.",
+        text: "C'est payé. Tu peux partir maintenant.",
+        background: "#000",
+        color: "#fff",
+        icon: "success",
+        iconColor: "#666",
+        confirmButtonColor: "#111",
+        confirmButtonText: "Fermer",
+        customClass: {
+          popup: "swal2-dark-popup",
+          title: "swal2-dark-title",
+          confirmButton: "swal2-dark-button",
+        }
+      });    }
 
     setLoading(false)
   }
