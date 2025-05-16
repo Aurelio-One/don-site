@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import Swal from "sweetalert2";
+import "./App.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 const amounts = [5, 10, 20, 50, 100, 500];
@@ -34,13 +35,18 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ padding: 24, border: "1px solid #ccc", borderRadius: 10, backgroundColor: "#fff" }}>
-        <h1 style={{ textAlign: "center" }}>Soutenez-nous 💙</h1>
-        <p style={{ textAlign: "center" }}>Choisissez un montant :</p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+    <div className="container">
+      <div className="card">
+        <h1>Soutenez-nous 🤍</h1>
+        <p>Choisissez un montant</p>
+        <div className="buttons">
           {amounts.map((amt) => (
-            <button key={amt} onClick={() => handlePayment(amt)} disabled={loading}>
+            <button
+              key={amt}
+              className="btn"
+              onClick={() => handlePayment(amt)}
+              disabled={loading}
+            >
               {amt} €
             </button>
           ))}
