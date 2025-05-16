@@ -65,7 +65,7 @@ function App() {
     <div className="container dark">
       <div className="card dom">
         <h1 className="dom-title">Soumets-toi.</h1>
-        <p className="dom-sub">Tu paies. Tu n’existes plus.</p>
+        <p className="dom-sub">Tu paies. Tu disparais.</p>
 
         {!selectedAmount ? (
           <div className="buttons">
