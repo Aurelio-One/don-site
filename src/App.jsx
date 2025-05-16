@@ -35,15 +35,15 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h1>Paie 🤍</h1>
-        <p>Tu paies combien ?</p>
+    <div className="container dark">
+      <div className="card dom">
+        <h1 className="dom-title">Soumets-toi.</h1>
+        <p className="dom-sub">Tu paies. Tu n’existes plus.</p>
         <div className="buttons">
           {amounts.map((amt) => (
             <button
               key={amt}
-              className="btn"
+              className="btn dom-btn"
               onClick={() => handlePayment(amt)}
               disabled={loading}
             >
