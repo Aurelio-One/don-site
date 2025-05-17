@@ -98,36 +98,42 @@ function FakeTributes() {
   const [events, setEvents] = useState([]);
 
   const fakeData = [
-    "Anonyme - 50€ - Paris",
-    "Julien - 10€ - Lyon",
-    "Anonyme - 100€ - Bruxelles",
-    "Victor - 20€ - Genève",
-    "Marc - 200€ - Marseille",
-    "Anonyme - 75€ - Montréal",
-    "Lucas - 30€ - Toulouse",
-    "François - 60€ - Nantes",
-    "Anonyme - 15€ - Berlin",
-    "Damien - 25€ - Nice"
+    "Anonymous – 50€ – Paris",
+    "Julien – 10€ – Lyon",
+    "Anonymous – 100€ – Bruxelles",
+    "Victor – 20€ – Genève",
+    "Marc – 200€ – Marseille",
+    "Lucas – 30€ – Toulouse",
+    "François – 60€ – Nantes",
+    "Anonymous – 15€ – Berlin",
+    "Damien – 25€ – Nice",
+    "Alex – 70€ – Bordeaux"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       const newEvent = fakeData[Math.floor(Math.random() * fakeData.length)];
-      setEvents((prev) => [...prev.slice(-4), newEvent]);
-    }, Math.random() * 8000 + 4000);
+      const id = Date.now();
+      setEvents((prev) => [...prev.slice(-3), { id, text: newEvent }]); // max 4
+
+      setTimeout(() => {
+        setEvents((prev) => prev.filter((e) => e.id !== id));
+      }, 4000);
+    }, Math.random() * 8000 + 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="fake-tributes">
-      {events.map((e, i) => (
-        <div key={i} className="tribute-notif">
-          <span className="notif-dot" /> {e}
+    <div className="notif-wrapper">
+      {events.map((e) => (
+        <div key={e.id} className="notif-ios">
+          <div className="notif-content">{e.text}</div>
         </div>
       ))}
     </div>
   );
 }
+
 
 function App() {
   const [selectedAmount, setSelectedAmount] = useState(null);
