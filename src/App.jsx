@@ -111,6 +111,16 @@ function FakeTributes() {
   ];
 
   useEffect(() => {
+    // Affiche directement 3 notifs au chargement
+    const initial = Array.from({ length: 3 }).map(() => {
+      return {
+        id: Date.now() + Math.random(),
+        text: fakeData[Math.floor(Math.random() * fakeData.length)],
+      };
+    });
+    setEvents(initial);
+
+    // Ensuite, on ajoute régulièrement d'autres notifs
     const getFrequency = () => {
       const hour = new Date().getHours();
       if (hour >= 18 && hour <= 23) return [2000, 4000];
@@ -123,17 +133,15 @@ function FakeTributes() {
       const delay = Math.random() * (max - min) + min;
 
       const id = setTimeout(() => {
-        const newEvent = fakeData[Math.floor(Math.random() * fakeData.length)];
-        const uid = Date.now();
+        const newEvent = {
+          id: Date.now(),
+          text: fakeData[Math.floor(Math.random() * fakeData.length)],
+        };
 
         setEvents((prev) => {
-          const updated = [...prev, { id: uid, text: newEvent }];
-          return updated.slice(-4);
+          const updated = [...prev, newEvent];
+          return updated.slice(-4); // max 4 visibles
         });
-
-        setTimeout(() => {
-          setEvents((prev) => prev.filter((e) => e.id !== uid));
-        }, 8000);
 
         launchLoop();
       }, delay);
@@ -154,6 +162,7 @@ function FakeTributes() {
     </div>
   );
 }
+
 
 function App() {
   const [selectedAmount, setSelectedAmount] = useState(null);
