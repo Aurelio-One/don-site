@@ -110,17 +110,16 @@ function FakeTributes() {
   const [events, setEvents] = useState([])
 
   const fakeData = [
-    'Anonymous – 50€ – Paris',
-    'Julien – 10€ – Lyon',
-    'Anonymous – 100€ – Bruxelles',
-    'Victor – 20€ – Genève',
-    'Marc – 200€ – Marseille',
-    'Lucas – 30€ – Toulouse',
-    'François – 60€ – Nantes',
-    'Anonymous – 15€ – Berlin',
-    'Damien – 25€ – Nice',
-    'Alex – 70€ – Bordeaux',
-  ]
+    { name: "Anonymous", amount: 50, city: "Paris" },
+    { name: "Julien", amount: 10, city: "Lyon" },
+    { name: "Victor", amount: 20, city: "Genève" },
+    { name: "Marc", amount: 200, city: "Marseille" },
+    { name: "Lucas", amount: 30, city: "Toulouse" },
+    { name: "François", amount: 60, city: "Nantes" },
+    { name: "Damien", amount: 25, city: "Nice" },
+    { name: "Alex", amount: 70, city: "Bordeaux" },
+  ];
+  
 
   useEffect(() => {
     // Affiche directement 3 notifs au chargement
