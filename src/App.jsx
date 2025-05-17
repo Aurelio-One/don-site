@@ -114,10 +114,10 @@ function FakeTributes() {
     { name: 'Julien', amount: 10, city: 'Lyon' },
     { name: 'Victor', amount: 20, city: 'Genève' },
     { name: 'Marc', amount: 200, city: 'Marseille' },
-    { name: 'Lucas', amount: 30, city: 'Toulouse' },
-    { name: 'François', amount: 60, city: 'Nantes' },
-    { name: 'Damien', amount: 25, city: 'Nice' },
-    { name: 'Alex', amount: 70, city: 'Bordeaux' },
+    { name: 'Lucas', amount: 200, city: 'Toulouse' },
+    { name: 'François', amount: 100, city: 'Nantes' },
+    { name: 'Damien', amount: 50, city: 'Nice' },
+    { name: 'Alex', amount: 200, city: 'Bordeaux' },
   ]
 
   useEffect(() => {
