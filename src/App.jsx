@@ -124,13 +124,13 @@ function FakeTributes() {
 
   useEffect(() => {
     // Affiche directement 3 notifs au chargement
-    const initial = Array.from({ length: 3 }).map(() => {
-      return {
-        id: Date.now() + Math.random(),
-        text: fakeData[Math.floor(Math.random() * fakeData.length)],
-      }
-    })
-    setEvents(initial)
+    const shuffled = [...fakeData].sort(() => 0.5 - Math.random());
+    const initial = shuffled.slice(0, 4).map((text) => ({
+      id: Date.now() + Math.random(),
+      text,
+    }));
+    setEvents(initial);
+    
 
     // Ensuite, on ajoute régulièrement d'autres notifs
     const getFrequency = () => {

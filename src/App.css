@@ -126,34 +126,32 @@ body {
 }
 
 .notif-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  text-align: left;
-  padding-left: 4px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
 }
 
+
 .notif-wrapper {
-  height: 260px;
+  min-height: 260px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 0.75rem;
-  overflow: hidden;
 }
 
 .notif-ios {
   width: 100%;
   background: rgba(28, 28, 30, 0.9);
   color: white;
-  border-radius: 18px;
-  padding: 0.85rem 1.3rem;
-  font-size: 0.92rem;
+  border-radius: 999px; /* arrondi complet type bulle iOS */
+  padding: 0.85rem 1.4rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont, \"San Francisco\", \"Segoe UI\", Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, sans-serif;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   animation: fadeInUp 0.4s ease;
