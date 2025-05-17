@@ -110,26 +110,25 @@ function FakeTributes() {
   const [events, setEvents] = useState([])
 
   const fakeData = [
-    { name: "Anonymous", amount: 50, city: "Paris" },
-    { name: "Julien", amount: 10, city: "Lyon" },
-    { name: "Victor", amount: 20, city: "Genève" },
-    { name: "Marc", amount: 200, city: "Marseille" },
-    { name: "Lucas", amount: 30, city: "Toulouse" },
-    { name: "François", amount: 60, city: "Nantes" },
-    { name: "Damien", amount: 25, city: "Nice" },
-    { name: "Alex", amount: 70, city: "Bordeaux" },
-  ];
-  
+    { name: 'Anonymous', amount: 50, city: 'Paris' },
+    { name: 'Julien', amount: 10, city: 'Lyon' },
+    { name: 'Victor', amount: 20, city: 'Genève' },
+    { name: 'Marc', amount: 200, city: 'Marseille' },
+    { name: 'Lucas', amount: 30, city: 'Toulouse' },
+    { name: 'François', amount: 60, city: 'Nantes' },
+    { name: 'Damien', amount: 25, city: 'Nice' },
+    { name: 'Alex', amount: 70, city: 'Bordeaux' },
+  ]
 
   useEffect(() => {
     // Affiche directement 3 notifs au chargement
-    const shuffled = [...fakeData].sort(() => 0.5 - Math.random());
-    const initial = shuffled.slice(0, 4).map((text) => ({
+    const shuffled = [...fakeData].sort(() => 0.5 - Math.random())
+    const initial = shuffled.slice(0, 4).map((entry) => ({
       id: Date.now() + Math.random(),
-      text,
+      ...entry,
     }));
-    setEvents(initial);
-    
+  
+    setEvents(initial)
 
     // Ensuite, on ajoute régulièrement d'autres notifs
     const getFrequency = () => {
@@ -146,13 +145,14 @@ function FakeTributes() {
       const id = setTimeout(() => {
         const newEvent = {
           id: Date.now(),
-          text: fakeData[Math.floor(Math.random() * fakeData.length)],
-        }
-
+          ...fakeData[Math.floor(Math.random() * fakeData.length)]
+        };
+        
         setEvents((prev) => {
-          const updated = [...prev, newEvent]
-          return updated.slice(-4) // max 4 visibles
-        })
+          const updated = [...prev, newEvent];
+          return updated.slice(-4); // max 4 visibles
+        });
+        
 
         launchLoop()
       }, delay)
@@ -172,7 +172,11 @@ function FakeTributes() {
             key={e.id}
             className='notif-ios'
           >
-            <div className='notif-content'>{e.text}</div>
+            <div className='notif-line'>
+              <span className='notif-name'>{e.name}</span>
+              <span className='notif-amount'>{e.amount}€</span>
+            </div>
+            <div className='notif-location'>{e.city}</div>
           </div>
         ))}
       </div>
