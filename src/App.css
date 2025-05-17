@@ -138,3 +138,53 @@ body {
 .swal2-dark-button:hover {
   background: #222 !important;
 }
+.fake-tributes {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #aaa;
+  opacity: 0.85;
+  animation: fadeIn 1s ease;
+}
+
+.tribute-notif {
+  background: #111;
+  padding: 0.6rem 1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 280px;
+  animation: slideIn 0.5s ease;
+}
+
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.85;
+  }
+}
