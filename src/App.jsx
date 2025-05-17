@@ -17,7 +17,7 @@ function PaymentForm({ amount }) {
 
     Swal.fire({
       title: `${amount}€`,
-      text: "Paiement en cours. Bouge pas.",
+      text: "Paiement en cours. Ne touchez à rien.",
       allowOutsideClick: false,
       allowEscapeKey: false,
       showConfirmButton: false,
@@ -44,7 +44,7 @@ function PaymentForm({ amount }) {
     } else if (result.paymentIntent.status === "succeeded") {
       Swal.fire({
         title: "Exécuté.",
-        text: "C'est payé. Tu peux disparaître.",
+        text: "C'est payé. Tu peux partir maintenant.",
         background: "#000",
         color: "#fff",
         icon: "success",
@@ -111,16 +111,37 @@ function FakeTributes() {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const newEvent = fakeData[Math.floor(Math.random() * fakeData.length)];
-      const id = Date.now();
-      setEvents((prev) => [...prev.slice(-3), { id, text: newEvent }]); // max 4
+    const getFrequency = () => {
+      const hour = new Date().getHours();
+      if (hour >= 18 && hour <= 23) return [2000, 4000];
+      if (hour >= 10 && hour <= 13) return [3000, 5000];
+      return [6000, 9000];
+    };
 
-      setTimeout(() => {
-        setEvents((prev) => prev.filter((e) => e.id !== id));
-      }, 4000);
-    }, Math.random() * 8000 + 5000);
-    return () => clearInterval(interval);
+    const launchLoop = () => {
+      const [min, max] = getFrequency();
+      const delay = Math.random() * (max - min) + min;
+
+      const id = setTimeout(() => {
+        const newEvent = fakeData[Math.floor(Math.random() * fakeData.length)];
+        const uid = Date.now();
+
+        setEvents((prev) => {
+          const updated = [...prev, { id: uid, text: newEvent }];
+          return updated.slice(-4);
+        });
+
+        setTimeout(() => {
+          setEvents((prev) => prev.filter((e) => e.id !== uid));
+        }, 8000);
+
+        launchLoop();
+      }, delay);
+
+      return () => clearTimeout(id);
+    };
+
+    launchLoop();
   }, []);
 
   return (
@@ -133,7 +154,6 @@ function FakeTributes() {
     </div>
   );
 }
-
 
 function App() {
   const [selectedAmount, setSelectedAmount] = useState(null);
