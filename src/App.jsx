@@ -126,8 +126,8 @@ function FakeTributes() {
     const initial = shuffled.slice(0, 4).map((entry) => ({
       id: Date.now() + Math.random(),
       ...entry,
-    }));
-  
+    }))
+
     setEvents(initial)
 
     // Ensuite, on ajoute régulièrement d'autres notifs
@@ -145,14 +145,13 @@ function FakeTributes() {
       const id = setTimeout(() => {
         const newEvent = {
           id: Date.now(),
-          ...fakeData[Math.floor(Math.random() * fakeData.length)]
-        };
-        
+          ...fakeData[Math.floor(Math.random() * fakeData.length)],
+        }
+
         setEvents((prev) => {
-          const updated = [...prev, newEvent];
-          return updated.slice(-4); // max 4 visibles
-        });
-        
+          const updated = [...prev, newEvent]
+          return updated.slice(-4) // max 4 visibles
+        })
 
         launchLoop()
       }, delay)
@@ -172,11 +171,13 @@ function FakeTributes() {
             key={e.id}
             className='notif-ios'
           >
-            <div className='notif-line'>
-              <span className='notif-name'>{e.name}</span>
-              <span className='notif-amount'>{e.amount}€</span>
+            <div className='notif-flex'>
+              <div className='notif-name-block'>
+                <div className='notif-name'>{e.name}</div>
+                <div className='notif-location'>{e.city}</div>
+              </div>
+              <div className='notif-amount'>{e.amount}€</div>
             </div>
-            <div className='notif-location'>{e.city}</div>
           </div>
         ))}
       </div>

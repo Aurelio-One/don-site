@@ -119,10 +119,11 @@ body {
   background: #222 !important;
 }
 
+/* ==== NOTIFICATIONS FINDOM ==== */
+
 .notif-block {
   margin-top: 4rem;
   width: 100%;
-  max-width: 100%;
 }
 
 .notif-title {
@@ -132,8 +133,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 500;
+  padding-left: 4px;
 }
-
 
 .notif-wrapper {
   min-height: 260px;
@@ -144,48 +145,56 @@ body {
 }
 
 .notif-ios {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   background: rgba(28, 28, 30, 0.9);
   color: white;
-  border-radius: 999px; /* arrondi complet type bulle iOS */
-  padding: 0.85rem 1.4rem;
-  font-size: 0.95rem;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, sans-serif;
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, sans-serif;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  animation: fadeInUp 0.4s ease;
   opacity: 0.96;
-  line-height: 1.4;
+  animation: fadeInUp 0.4s ease;
 }
 
-.notif-line {
+.notif-flex {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 2px;
+  align-items: center;
+  width: 100%;
+}
+
+.notif-name-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .notif-name {
-  color: #fff;
-  opacity: 0.9;
-}
-
-.notif-amount {
-  color: #4ade80;
   font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
 }
 
 .notif-location {
   font-size: 0.82rem;
   color: #aaa;
   font-style: italic;
-  text-align: left;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
-
+.notif-amount {
+  color: #4ade80;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: right;
+  min-width: 50px;
+  margin-left: 1.2rem;
+}
 
 @keyframes fadeInUp {
   from {
@@ -197,6 +206,7 @@ body {
     transform: translateY(0);
   }
 }
+
 
 @keyframes fadeOut {
   to {
